@@ -1,0 +1,87 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+/* This file is for your main application CSS */
+/* assets/css/app.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+
+  h1{
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #343a40;
+  }
+
+  hr {
+    border: 5px;
+    height: 1px;
+    background: black; /* Color of the line */
+    margin-top: 20px ; 
+  }
+
+  .para{
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;  /* Box border */
+    padding: 40px 40px;           /* Padding inside the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    border-radius: 8px;      /* Rounded corners */
+    max-width: 600px;  
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #4682B4;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+  .register-btn{
+    padding: 2px 5px;
+    border-radius: 5px;
+    background-color: #DADADA;
+    color: black;
+
+  }
+
+  .btn:hover {
+    background-color:  #357ABD;
+  }
+
+  .register-btn:hover{
+    background-color: #A5A5A5;
+  }
+
+ 

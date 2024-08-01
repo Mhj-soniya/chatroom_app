@@ -1,0 +1,22 @@
+<div class="container">
+        <.form :let={f} for={@changeset} action={~p"/add/room"} method="post">
+        <div class="form-group">
+            <.input field={f[:room_name]} type="text"/>
+        </div>
+        <div class="btn">
+            <button type="submit">Add</button>
+        </div>
+        </.form>
+
+    <div class="rooms-list">
+        <h1 class="rooms-heading">Available Rooms</h1>
+        <hr>
+        <ul class="rooms-ul">
+            <%= for room <- @rooms do %>
+                <li class="rooms-li">
+                    <a href={~s"/chats/#{room.id}"} class="rooms-link"><%= room.room_name %></a>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
