@@ -1,7 +1,7 @@
 defmodule ChatroomWeb.Presence do
   use Phoenix.Presence,
     otp_app: :chatroom,
-    pubsub_server: Chatroom.Pubsub
+    pubsub_server: Chatroom.PubSub
 
 
   def init(_opts) do
@@ -21,7 +21,7 @@ defmodule ChatroomWeb.Presence do
     for {user_id, presence} <- joins do
       user_data = %{id: user_id, user: presence.user, metas: Map.fetch!(presences, user_id)}
       msg = {__MODULE__, {:join, user_data}}
-      Phoenix.PubSub.local_broadcast(Chatroom.Pubsub, "proxy:#{topic}", msg)
+      Phoenix.PubSub.local_broadcast(Chatroom.PubSub, "proxy:#{topic}", msg)
     end
 
     for {user_id, presence} <- leaves do
@@ -33,17 +33,24 @@ defmodule ChatroomWeb.Presence do
 
       user_data = %{id: user_id, user: presence.user, metas: metas}
       msg = {__MODULE__, {:leave, user_data}}
-      Phoenix.PubSub.local_broadcast(Chatroom.Pubsub, "proxy:#{topic}", msg)
+      Phoenix.PubSub.local_broadcast(Chatroom.PubSub, "proxy:#{topic}", msg)
     end
 
   {:ok, state}
 
   end
 
-  def list_online_users(), do: list("chatroom") |> Enum.map(fn {_id, presence} -> presence end)
+  def list_online_users(), do: list("online_users") |> Enum.map(fn {_id, presence} -> presence end)
 
-  def track_user(name, params), do: track(self(), "online_users", name, params)
+  def track_user(name, params) do
+    IO.puts("Tracking user: #{name}")
+    IO.puts("PID: #{inspect(self())}")
+    case track(self(), "online_users", name, params) do
+      {:ok, _} -> IO.puts("User #{name} tracked successfully.")
+      {:error, reason} -> IO.puts("Failed to track user #{name}: #{inspect(reason)}")
+    end
+  end
 
-  def subscribe(), do: Phoenix.PubSub.subscribe(ChatroomWeb.PubSub, "proxy:online_users")
+  def subscribe(), do: Phoenix.PubSub.subscribe(Chatroom.PubSub, "proxy:online_users")
 
 end

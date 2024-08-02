@@ -33,6 +33,20 @@ body {
     text-align: center;
   }
   
+  .flex {
+    display: flex;
+    flex-direction: row-reverse; /* Changed to row-reverse to position sidebar on the right */
+  }
+  
+  .sidebar {
+    display: flex;
+    width: 300px; /* Fixed width for sidebar */
+    padding: 10px;
+    border-left: 1px solid #ddd; /* Change border to the left */
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Include padding and border in the width */
+  }
+
   .container {
     max-width: 960px;
     margin: 0 auto;
@@ -84,4 +98,5 @@ body {
     background-color: #A5A5A5;
   }
 
+  
  

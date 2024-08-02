@@ -23,6 +23,7 @@ config :chatroom, ChatroomWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
+  pubsub_server: Chatroom.PubSub,
   secret_key_base: "vWo8xkB/Y9WX078inLIhcCwZeWWT/z7vw94A+dGxg7RmpKZI3baEwWBZOfRIPQ/c",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:chatroom, ~w(--sourcemap=inline --watch)]},

@@ -17,6 +17,7 @@ defmodule Chatroom.Application do
       # Start a worker by calling: Chatroom.Worker.start_link(arg)
       # {Chatroom.Worker, arg},
       # Start to serve requests, typically the last entry
+      ChatroomWeb.Presence,
       ChatroomWeb.Endpoint
     ]
 
